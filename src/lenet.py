@@ -121,7 +121,7 @@ for epoch in range(epochs):
         running_loss = 0.0
      
 
-     correct = 0
+correct = 0
 total = 0
 with torch.no_grad():
     for data in testloader:
