@@ -1,5 +1,5 @@
 batch = 1000
-
+#yay! git works
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
