@@ -5,7 +5,7 @@
 //https://containers.dev/implementors/json_reference/#_image-or-dockerfile-specific-properties for how to set up this file
 //https://containers.dev/features
 {
-	"name": "GPU_PYTORCH_v3",
+	"name": "GPU_PYTORCH_v4",
 	"build": {
 		// Sets the run context to one level up instead of the .devcontainer folder.
 		"context": "..",
