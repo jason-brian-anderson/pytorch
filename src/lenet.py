@@ -1,13 +1,16 @@
 """
 this is my crappy code, and this is a docstring
 """
-
+import gc
 import torch
+
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 import torchvision
 import torchvision.transforms as transforms
+
+
 
 class LeNet(nn.Module):
     """
@@ -114,6 +117,9 @@ optimizer = optim.SGD(
     lr=0.001,
     momentum=0.9,
 )
+
+# x = 33
+
 
 epochs = 3
 
