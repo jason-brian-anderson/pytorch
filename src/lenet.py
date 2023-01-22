@@ -1,7 +1,6 @@
 """
 this is my crappy code, and this is a docstring
 """
-import gc
 import torch
 
 import torch.nn as nn
