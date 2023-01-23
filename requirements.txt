@@ -6,3 +6,4 @@ scikit-learn
 pytest
 black
 ipykernel
+pandas-datareader
