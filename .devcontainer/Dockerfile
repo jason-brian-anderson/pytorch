@@ -3,7 +3,7 @@ FROM pytorch/pytorch
 
 LABEL version="0.0" maintainer="Jason Anderson" description="This is a functional pytorch dev platform"
 
-RUN apt-get update && apt-get install -y xz-utils vim tcpdump git
+RUN apt-get update && apt-get install -y xz-utils vim tcpdump git make
 
 
 COPY ../requirements.txt /requirements.txt  
@@ -12,3 +12,5 @@ COPY ../requirements.txt /requirements.txt
 RUN conda install -y pip
 RUN pip install  -r /requirements.txt
 EXPOSE 80
+
+RUN echo "set -o vi" >> /root/.bashrc

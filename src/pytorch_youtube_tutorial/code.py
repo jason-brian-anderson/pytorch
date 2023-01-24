@@ -10,12 +10,7 @@ import torchvision
 import torchvision.transforms as transforms
 
 
-
 class LeNet(nn.Module):
-    """
-    some thing
-    """
-
     def __init__(self):
         super(LeNet, self).__init__()
         self.conv1 = nn.Conv2d(3, 6, 3)
@@ -152,5 +147,6 @@ with torch.no_grad():
 
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
+
 
 print(correct / total * 100, "%")

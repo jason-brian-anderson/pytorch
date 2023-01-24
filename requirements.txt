@@ -7,3 +7,4 @@ pytest
 black
 ipykernel
 pandas-datareader
+pylint
