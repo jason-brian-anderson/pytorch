@@ -8,3 +8,4 @@ black
 ipykernel
 pandas-datareader
 pylint
+#pyzmq==19.0.2

@@ -1,6 +1,6 @@
-"""
-this is my crappy code, and this is a docstring
-"""
+import sys
+
+batch = 8
 import torch
 
 import torch.nn as nn
@@ -9,15 +9,20 @@ import torch.optim as optim
 import torchvision
 import torchvision.transforms as transforms
 
+sys.path.insert(1, '/workspaces/pytorch_work')
+import src.lib.utils as utils
+
+device = utils.get_device()
+
 
 class LeNet(nn.Module):
     def __init__(self):
         super(LeNet, self).__init__()
         self.conv1 = nn.Conv2d(3, 6, 3)
         self.conv2 = nn.Conv2d(6, 16, 3)
-        self.fc1 = nn.Linear(16 * 6 * 6, 20)
-        self.fc2 = nn.Linear(20, 84)
-        self.fc3 = nn.Linear(84, 10)
+        self.fc1 = nn.Linear(16 * 6 * 6, 200)
+        self.fc2 = nn.Linear(200, 800)
+        self.fc3 = nn.Linear(800, 10)
 
     def forward(self, x):
         x = self.conv1(x)
@@ -51,6 +56,7 @@ class LeNet(nn.Module):
 
 
 net = LeNet()
+net = net.to(device)
 
 transform = transforms.Compose(
     [
@@ -79,14 +85,14 @@ testset = torchvision.datasets.CIFAR10(
 
 trainloader = torch.utils.data.DataLoader(
     trainset,
-    batch_size=4,
+    batch_size=batch,
     shuffle=True,
     num_workers=1,
 )
 
 testloader = torch.utils.data.DataLoader(
     testset,
-    batch_size=4,
+    batch_size=batch,
     shuffle=True,
     num_workers=1,
 )
@@ -112,7 +118,7 @@ optimizer = optim.SGD(
     momentum=0.9,
 )
 
-# x = 33
+
 
 
 epochs = 3
@@ -123,16 +129,19 @@ for epoch in range(epochs):
     for i, data in enumerate(trainloader, 0):
 
         inputs, labels = data
+        inputs = inputs.to(device)
+        labels = labels.to(device)
 
         optimizer.zero_grad()
 
         outputs = net(inputs)
+
         loss = criterion(outputs, labels)
         loss.backward()
         optimizer.step()
 
         running_loss += loss.item()
-        if i % 2000 == 1999:
+        if i % batch * 10000 == 0:
             print(f"[{i+1}], epoch: {epoch}: {10000 * running_loss / 2000:.3f}")
         running_loss = 0.0
 
@@ -142,6 +151,8 @@ total = 0
 with torch.no_grad():
     for data in testloader:
         images, labels = data
+        images = images.to(device)
+        labels = labels.to(device)
         outputs = net(images)
         _, predicted = torch.max(outputs.data, 1)
 
