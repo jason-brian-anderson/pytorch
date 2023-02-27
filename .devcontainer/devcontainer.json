@@ -18,7 +18,8 @@
 	],
 	"features": {
 		//"ghcr.io/devcontainers-contrib/features/black:2": {},
-		//"ghcr.io/devcontainers-contrib/features/pylint:2": {}
+		//"ghcr.io/devcontainers-contrib/features/pylint:2": {},
+		
 	},
 	
 	"customizations": {
@@ -31,7 +32,8 @@
 				"ms-python.vscode-pylance",
 				"ms-toolsai.jupyter",
 				"ms-toolsai.jupyter-keymap",
-				"ms-vscode.makefile-tools"
+				"ms-vscode.makefile-tools",
+				
 			]
 		}
 	},

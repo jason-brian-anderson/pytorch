@@ -9,3 +9,10 @@ ipykernel
 pandas-datareader
 pylint
 #pyzmq==19.0.2
+tensorboard
+captum
+flask
+flask-compress
+freetype-py
+widgetsnbextension==3.5.1
+ipywidgets==7.6.3

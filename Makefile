@@ -1,6 +1,6 @@
 install:
 	pip install --upgrade pip &&\
-	pip install -r /workspaces/pytorch/requirements.txt
+	pip install -r requirements.txt
 
 test:
 	clear && python -m pytest -vv code.py 
